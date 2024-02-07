@@ -1,0 +1,66 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Voitures
+{% endblock %}
+
+{% block body %}
+	<section class="section-cars">
+		<h2 class="h2-cars">Tous nos véhicules d'occasion</h2>
+		{% include "cars/partials/_search.html.twig" %}
+
+		<div class="vehicle-list row m-2 mb-5">
+			<!-- Aquí puedes mostrar los vehículos de ocasión disponibles -->
+			{% for car in cars %}
+				<div class="vehicle-item  Volkswagen prix-10000 avant2010 col-lg-3 col-md-5">
+					<div class="card h-100">
+						<img src="{{ car.image }}" alt="Car 1" class="card-img-top">
+						<div class="card-body">
+							<h3 class="card-title">{{ car.name }}</h3>
+							<p class="card-text">Année:
+								{{ car.year }}</p>
+							<p class="card-text">kilométrage:
+								{{ car.mileage }}
+								km</p>
+							<p class="card-text price">Prix:
+								{{ car.price}}
+								€</p>
+							<div class="text-end">
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carModal{{ car.id }}">
+									Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="carModal{{ car.id }}" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="carModalLabel">{{ car.name }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<img src="{{ car.image }}" alt="Car 1" class="img-fluid" loading="lazy">
+								<p>Année:
+									{{ car.year }}</p>
+								<p>kilométrage:
+									{{ car.mileage }}
+									km</p>
+								<p>Prix:
+									{{ car.price }}
+									€</p>
+								<p>{{ car.description }}</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+								<a href="contact.php" class="btn btn-primary">Contact</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

@@ -1,3 +1,245 @@
-body {
-    background-color: skyblue;
+*,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
+
+
+
+/*ACUUEIL*/
+/*HEADER-MENU*/
+
+
+header {
+  background-color: rgba(14, 17, 202, 0.6);
+  padding: 20px;
+
+}
+
+.custom-navbar {
+  background-color: rgba(14, 17, 202, 0.3);
+}
+
+.elements-menu {
+  color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 23px;
+
+}
+
+
+
+.project-name {
+  padding: 8px;
+  font-size: 24px;
+  box-shadow: 2px 2px 4px black;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-style: italic;
+}
+
+
+
+.icon-nom {
+  height: 95px;
+  width: 95px;
+  margin: 0;
+}
+
+.icon-1 {
+  height: 55px;
+  width: 55px;
+  margin: 0;
+}
+
+.icon-2 {
+  height: 90px;
+  width: 90px;
+  margin: 0;
+}
+
+.icon-3 {
+  height: 70px;
+  width: 70px;
+  margin: 0;
+}
+
+.active {
+  transform: translateY(-7px);
+}
+
+.nav-item {
+  transition: transform 0.4s ease;
+}
+
+.nav-item:hover {
+  transform: translateY(-7px);
+}
+
+.title-name {
+  margin-right: 15px;
+}
+
+
+form {
+
+
+  background-color: rgba(187, 188, 228, 0.5);
+  padding: 10px;
+  margin: 2px 0;
+}
+
+form label {
+  font-weight: bolder;
+  display: block;
+  margin-top: 10px;
+}
+
+
+/*PRÉSENTATION DES SERVICES*/
+
+#services {
+  margin-top: 0;
+}
+
+#services .fa-stack {
+  margin-bottom: 20px;
+}
+
+#services .service-heading {
+  margin-top: 30px;
+}
+
+#services h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  margin-top: 1em;
+}
+
+.section-service {
+  background-color: rgba(14, 17, 202, 0.6);
+  margin-bottom: 3em;
+}
+
+
+/*section horaires*/
+.sect-horaires {
+  margin-top: 9em;
+  margin-bottom: 9em;
+}
+
+/*SECTION Véhicules d'occasion*/
+
+.h2-cars {
+  margin-bottom: 1em;
+  margin-top: 3em;
+  text-align: center;
+  font-weight: bold;
+}
+
+/*SECTION voitures*/
+
+.price {
+  font-size: 24px;
+  font-weight: bolder;
+  color: #001aff;
+}
+
+/*PAGE-contact*/
+
+.section-contact {
+  margin-top: 7em;
+  margin-bottom: 200px;
+}
+
+.title-form-contact {
+  font-weight: bold;
+}
+
+.text-contact {
+  text-align: center;
+}
+
+
+.requi {
+  color: red;
+}
+
+
+.img-background {
+  color: white !important;
+  background-image: url('../img/Fondo2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.img-background .text-muted {
+  color: white !important;
+}
+
+
+.title-service {
+
+  margin-top: 0;
+  margin-bottom: 9em;
+}
+
+.section-cars {
+  background-color: rgba(14, 17, 202, 0.1);
+  padding: 1em;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+.sect-cars {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/*Formulario satisfacion */
+.star {
+  cursor: pointer;
+  color: lightgray;
+}
+
+.comentaire {
+  background-color: rgba(14, 17, 202, 0.1);
+}
+
+.star.selected {
+  color: gold;
+}
+
+.title-avis {
+  margin-top: 5em;
+}
+
+#avisForm {
+  margin-bottom: 8em;
+}
+
+/*Formulario de conexion */
+.btn-filtre {
+  margin-top: 1em;
+}
+
+
+/*PAGE-VEHICULES*/
+.vehicle-item {
+  margin-bottom: 4em;
+}
+
+/*Formulario de filtro */
+.form-filtre {
+  background-color: rgba(187, 188, 228, 0.5);
+
+  margin-bottom: 3em;
+}
+
+
+
+/*temoniage-clients*/

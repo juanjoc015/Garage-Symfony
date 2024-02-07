@@ -27,4 +27,33 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+    'bootstrap' => [
+        'version' => '5.3.2',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.2',
+        'type' => 'css',
+    ],
+    '@fortawesome/fontawesome-free' => [
+        'version' => '6.5.1',
+    ],
+    '@fortawesome/fontawesome-free/css/fontawesome.min.css' => [
+        'version' => '6.5.1',
+        'type' => 'css',
+    ],
+    '@fortawesome/fontawesome-svg-core' => [
+        'version' => '6.5.1',
+    ],
+    '@fortawesome/free-solid-svg-icons' => [
+        'version' => '6.5.1',
+    ],
+    '@fortawesome/free-regular-svg-icons' => [
+        'version' => '6.5.1',
+    ],
+    '@fortawesome/free-brands-svg-icons' => [
+        'version' => '6.5.1',
+    ],
 ];
