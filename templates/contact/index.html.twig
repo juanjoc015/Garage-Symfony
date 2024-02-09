@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="container section-contact">
+			<div class="row">
+				<div class="col-12">
+					<span class="text-contact">
+						<h2 class="title-form-contact">Contact</h2>
+						<p>Vous pouvez nous contacter via le formulaire suivant :</p>
+						{% for label, messages in app.flashes(['success', 'error']) %}
+							{% for message in messages %}
+								<div class="alert alert-{{ label }}">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+					</span>
+					{{ form_start(infosForm, {'attr':{'id':'contact-Form'}}) }}
+					{{ form_widget(infosForm) }}
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary my-3">Envoyer</button>
+					</div>
+					{{ form_end(infosForm) }}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

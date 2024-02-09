@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CarsController extends AbstractController
 {
-    #[Route('/cars', name: 'cars')]
+    #[Route('/voitures', name: 'cars')]
     public function index(CarRepository $carRepository): Response
     {
         $cars = $carRepository->findAll();

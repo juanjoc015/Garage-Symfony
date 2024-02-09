@@ -11,6 +11,7 @@ class CarsFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         for ($i = 1; $i <= 20; $i++) {
+            
             $car = new Car();
 
             $car->setName( 'voiture ' . $i)
