@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ReviewRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ReviewRepository;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Review
 {
     #[ORM\Id]
@@ -14,14 +16,51 @@ class Review
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(type: 'datetime')]
+    private \DateTimeInterface $createdAt;
+
+
+    #[Assert\NotBlank(message:'Votre nom ne doit pas etre vide')]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Votre nom doit comporter au moins {{ limit }} caractères.',
+        maxMessage: 'Votre nom ne peut pas dépasser {{ limit }} caractères',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
+    // seguridad lado servidor
+    #[Assert\NotBlank(message:'Votre message ne doit pas etre vide')]
+    #[Assert\Length(
+        max: 200,
+        maxMessage: 'Votre message ne peut pas dépasser {{ limit }} caractères',
+    )]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
-    #[ORM\Column]
+
+    #[Assert\Range(
+        min: 1,
+        max: 5,
+        notInRangeMessage: 'Votre note doit etre entre {{ min }} et {{ max }} etoiles',
+    )]
+    #[ORM\Column()]
     private ?int $rating = null;
+
+    
+
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    // Setter para createdAt
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 
     public function getId(): ?int
     {

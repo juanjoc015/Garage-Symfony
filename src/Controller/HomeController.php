@@ -30,21 +30,24 @@ class HomeController extends AbstractController
         $reviewForm = new Review();
         $form = $this->createForm(ReviewType::class, $reviewForm);
         $form->handleRequest($request);
-
+        
         // Verificar si el formulario ha sido enviado y es válido
         if($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($reviewForm);
             $this->entityManager->flush();
 
+            $this->addFlash('success', 'Votre avis a bien été envoyé');
             return $this->redirectToRoute('home');
         }
 
-        $reviews = $reviewRepository->findAll();
+
+        $reviews = $reviewRepository->findBy([], ['createdAt' => 'DESC'], 3);
+
 
         return $this->render('home/index.html.twig', [
             'cars' => $cars,
             'reviews' => $reviews,
-            'review_form' => $form->createView(),
+            'review_form' => $form,
         ]);
     }
 

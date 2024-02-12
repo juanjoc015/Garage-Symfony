@@ -2,58 +2,23 @@
 	<h2 class="text-center mb-4 title-avis">Avis des clients</h2>
 
 	<div class="row">
-
-		<div class="col-lg-4 mb-4">
-			<div class="card h-100">
-				<div class="card-body comentaire">
-					<h5 class="card-title">Jean Dupont</h5>
-					<p class="card-text">Excellent service! J'ai acheté une voiture d'occasion en très bon état et à un bon
-						                prix. Je recommande vivement cette entreprise.</p>
-					<div class="stars">
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
+		{% for review in reviews %}
+			<div class="col-lg-4 mb-4">
+				<div class="card h-100">
+					<div class="card-body comentaire">
+						<h5 class="card-title">{{ review.lastname }}</h5>
+						<p class="card-text">{{ review.message }}</p>
+						<div class="stars">
+							<span class="star selected">&#9733;</span>
+							<span class="star selected">&#9733;</span>
+							<span class="star selected">&#9733;</span>
+							<span class="star selected">&#9733;</span>
+							<span class="star selected">&#9733;</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="col-lg-4 mb-4">
-			<div class="card h-100">
-				<div class="card-body comentaire">
-					<h5 class="card-title">Marie Leblanc</h5>
-					<p class="card-text">Une grande variété de voitures et un personnel très serviable. Ils m'ont aidé à
-						                choisir la voiture parfaite pour moi.</p>
-					<div class="stars">
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-4 mb-4">
-			<div class="card h-100">
-				<div class="card-body comentaire">
-					<h5 class="card-title">Pierre Martin</h5>
-					<p class="card-title">Je suis très satisfait de ma nouvelle voiture. Le processus d'achat a été simple et
-						                rapide. Merci beaucoup!</p>
-					<div class="stars">
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-						<span class="star selected">&#9733;</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		{% endfor %}
 	</div>
 </section>
 
@@ -61,30 +26,30 @@
 	<h3 class="text-center mb-4">Votre avis nous intéresse</h3>
 	<div class="row">
 		<div class="col-lg-8 mx-auto">
-			<form id="avisForm">
-				<div class="mb-3">
-					<label for="nom" class="form-label">Votre nom</label>
-					<input type="text" class="form-control" id="nom" placeholder="Écrivez votre nom ici...">
+			{{ form_start(review_form, {'attr':{'id':'avisForm'}}) }}
+			<div class="mb-3">
+				{{ form_row(review_form.lastname) }}
+			</div>
+
+			<div class="mb-3">
+				{{ form_row(review_form.message) }}
+			</div>
+			<div class="mb-3">
+				<label for="rating" class="form-label">Évaluez-nous</label>
+				<div id="stars">
+					<span class="form_star star" data-value="1">&#9733;</span>
+					<span class="form_star star" data-value="2">&#9733;</span>
+					<span class="form_star star" data-value="3">&#9733;</span>
+					<span class="form_star star" data-value="4">&#9733;</span>
+					<span class="form_star star" data-value="5">&#9733;</span>
 				</div>
-				<div class="mb-3">
-					<label for="commentaire" class="form-label">Votre avis</label>
-					<textarea class="form-control" id="commentaire" rows="3" placeholder="Écrivez votre avis ici..."></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="rating" class="form-label">Évaluez-nous</label>
-					<div id="stars">
-						<span class="star" data-value="1">&#9733;</span>
-						<span class="star" data-value="2">&#9733;</span>
-						<span class="star" data-value="3">&#9733;</span>
-						<span class="star" data-value="4">&#9733;</span>
-						<span class="star" data-value="5">&#9733;</span>
-					</div>
-					<input type="hidden" id="rating" name="note">
-				</div>
-				<div class="d-flex justify-content-end">
-					<button type="submit" class="btn btn-primary">Poster l'avis</button>
-				</div>
-			</form>
+				{{ form_errors(review_form.rating) }}
+				{{ form_widget(review_form.rating, {'attr':{'id':'rating'}}) }}
+			</div>
+			<div class="d-flex justify-content-end">
+				<button type="submit" class="btn btn-primary">Poster l'avis</button>
+			</div>
+			{{ form_end(review_form) }}
 		</div>
 	</div>
 </section>

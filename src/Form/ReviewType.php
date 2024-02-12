@@ -3,11 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Review;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ReviewType extends AbstractType
@@ -21,7 +21,7 @@ class ReviewType extends AbstractType
             ->add('message', TextareaType::class, [
                 'label' => 'Votre avis'
             ])
-            ->add('rating', IntegerType::class, [
+            ->add('rating', HiddenType::class, [
                 'label' => 'Évaluez-nous'
             ])
         ;
