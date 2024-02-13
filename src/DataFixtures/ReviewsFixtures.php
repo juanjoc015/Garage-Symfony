@@ -16,7 +16,7 @@ class ReviewsFixtures extends Fixture
 
             $review = new Review();
             
-            $review->setlastName('nom ' . $i)
+            $review->setLastname('nom ' . $i)
                     ->setMessage('Contenu de la critique ' . $i)
                     ->setRating(mt_rand(1, 5))
                     ->setCreatedAt(new \DateTime())
