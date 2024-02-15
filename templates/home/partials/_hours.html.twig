@@ -5,24 +5,10 @@
 			<div class="col-md-6 col-lg-4">
 				<div class="card mb-3">
 					<div class="card-body">
-						<h5 class="card-title">Lundi - Vendredi</h5>
-						<p class="card-text">9:00 h - 18:00 h</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-4">
-				<div class="card mb-3">
-					<div class="card-body">
-						<h5 class="card-title">Samedi</h5>
-						<p class="card-text">9:00 h - 14:00 h</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-4">
-				<div class="card mb-3">
-					<div class="card-body">
-						<h5 class="card-title">Dimanche</h5>
-						<p class="card-text">Fermé</p>
+					{% for hour in hours %}
+						
+					<p class="fw-bold">{{ hour.day }}</p> - {{ hour.startDate|date('H:i') }} / {{ hour.endDate|date('H:i') }}
+					{% endfor %}
 					</div>
 				</div>
 			</div>

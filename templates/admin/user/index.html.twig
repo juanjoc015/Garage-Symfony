@@ -1,0 +1,40 @@
+{% extends 'admin/layouts/base.html.twig' %}
+
+{% block title %}Modification de l'utilisateur{% endblock %}
+
+{% block body %}
+    <h1 class="table m-4">Liste des utilisateurs</h1>
+    <table class="table m-4">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for role in user.roles %}
+                        {{ static_call('App\\Enum\\UserRoleEnum', 'getName', role|upper) }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('admin_user_show', {'id': user.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-secondary btn-sm">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun utilisateur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_user_new') }}" class="btn btn-success m-4">Ajouter</a>
+{% endblock %}

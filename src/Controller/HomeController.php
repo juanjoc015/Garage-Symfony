@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Review;
 use App\Form\ReviewType;
 use App\Repository\CarRepository;
+use App\Repository\HourRepository;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +24,11 @@ class HomeController extends AbstractController
     }
 
     #[Route('/', name: 'home')]
-    public function index(CarRepository $carRepository, ReviewRepository $reviewRepository, Request $request): Response
+    public function index(CarRepository $carRepository, ReviewRepository $reviewRepository, HourRepository $hourRepository, Request $request): Response
     {
         $cars = $carRepository->findWithQuantity(4);
+        
+        $hours = $hourRepository->findAll();
 
         // Crear una nueva reseña y el formulario asociado
         $reviewForm = new Review();
@@ -48,6 +52,7 @@ class HomeController extends AbstractController
             'cars' => $cars,
             'reviews' => $reviews,
             'review_form' => $form,
+            'hours' => $hours,
         ]);
     }
 
