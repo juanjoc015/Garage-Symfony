@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
+use App\Repository\HourRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,11 +23,12 @@ class ContactController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function index(Request $request): Response
+    public function index(Request $request, HourRepository $hourRepository): Response
     {
+        $hours = $hourRepository->findAll();
         $infosForm = new Contact();
         $form = $this->createForm(ContactType::class, $infosForm);
-        // recupera datos de $_POST que esta en $request
+        
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -39,7 +41,8 @@ class ContactController extends AbstractController
         }
             
         return $this->render('contact/index.html.twig', [
-            'infosForm' => $form->createView()
+            'infosForm' => $form->createView(),
+            'hours' => $hours,
         ]);
     }
 }

@@ -1,38 +1,61 @@
 <footer class="footer bg-dark text-white">
-    <div class="container-fluid py-5 px-5">
-        <div class="row align-items-start gx-3">
-            <!-- About section -->
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>À propos de nous</h5> <!-- About Us -->
-                <p>Vincent Parrot, votre concessionnaire de confiance depuis 2000. Nous proposons une large sélection de
-                    véhicules d'occasion de qualité.</p>
-            </div>
+	<div class="container-fluid py-5 px-5">
+		<div
+			class="row align-items-start gx-3">
+			<!-- About section -->
+			<div class="col-lg-3 col-md-6 mb-4">
+				<h5>À propos de nous</h5>
+				<!-- About Us -->
+				<p>Vincent Parrot, votre concessionnaire de confiance depuis 2000. Nous proposons une large sélection de
+					                    véhicules d'occasion de qualité.</p>
+			</div>
 
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Liens Rapides</h5>
-                <ul class="list-unstyled">
-                    <li><a href="{{ path('home') }}" class="text-white">Accueil</a></li>
-                    <li><a href="{{ path('cars') }}" class="text-white">Véhicules d'occasion</a></li>
-                    <li><a href="{{ path('contact') }}" class="text-white">Contactez-nous</a></li>
-                </ul>
-            </div>
+			<div class="col-lg-3 col-md-6 mb-4">
+				<h5>Liens Rapides</h5>
+				<ul class="list-unstyled">
+					<li>
+						<a href="{{ path('home') }}" class="text-white">Accueil</a>
+					</li>
+					<li>
+						<a href="{{ path('cars') }}" class="text-white">Véhicules d'occasion</a>
+					</li>
+					<li>
+						<a href="{{ path('contact') }}" class="text-white">Contactez-nous</a>
+					</li>
+				</ul>
+			</div>
 
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Horaires d'ouverture</h5>
-                <ul class="list-unstyled">
-                    <li>Lundi - Vendredi: 9h00 - 18h00</li>
-                    <li>Samedi: 9h00 - 14h00</li>
-                    <li>Dimanche: Fermé</li>
-                </ul>
-            </div>
+			<div class="col-lg-3 col-md-6 mb-4">
+				<h5>Horaires d'ouverture</h5>
+				<ul class="list-unstyled">
+					{% for hour in hours %}
+						<li>
+							{{ hour.day }}:
+							{% if hour.closed %}
+								Fermé
+							{% else %}
+								{{ hour.startDate|date('H:i') }}
+								-
+								{{ hour.endDate|date('H:i') }}
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 
-            <div class="col-lg-3 col-md-6 mb-4">
-                <h5>Contactez-nous</h5>
-                <p>123 Rue de l'Automobile, 75000 Paris, France</p>
-                <p>Email: <a href="mailto:info@automoto.com"> info@autocars.com</a></p>
-                <p>Téléphone: <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="text-center py-3 bg-dark text-white">&copy; 2023</div>
+
+			<div class="col-lg-3 col-md-6 mb-4">
+				<h5>Contactez-nous</h5>
+				<p>123 Rue de l'Automobile, 75000 Paris, France</p>
+				<p>Email:
+					<a href="mailto:info@automoto.com">
+						info@autocars.com</a>
+				</p>
+				<p>Téléphone:
+					<a href="tel:+33123456789">+33 1 23 45 67 89</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="text-center py-3 bg-dark text-white">&copy; 2023</div>
 </footer>
