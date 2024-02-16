@@ -3,12 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Hour;
-use Doctrine\DBAL\Types\BooleanType;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class HourType extends AbstractType
 {
@@ -40,7 +41,7 @@ class HourType extends AbstractType
                 'required' => false,
 
             ])
-            ->add('closed', BooleanType::class, [
+            ->add('closed', CheckboxType::class, [
                 'label' => 'Fermé',
                 'required' => false,
             ])

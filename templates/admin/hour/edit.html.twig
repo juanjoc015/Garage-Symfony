@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+{% extends 'admin/layouts/base.html.twig' %}
 
-<title>Edit Hour</title>
+{% block title %}Editer horaires{% endblock %}
 
 {% block body %}
-    <h1>Edit Hour</h1>
+    <h1>Editer horaires</h1>
 
-    {{ include('admin/hour/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/hour/_form.html.twig', {'button_label': 'Mettre a jour'}) }}
 
-    <a href="{{ path('admin_hour_index') }}">back to list</a>
+    <a href="{{ path('admin_hour_index') }}" class="btn btn-secondary">Retour</a>
 
     {{ include('admin/hour/_delete_form.html.twig') }}
 {% endblock %}

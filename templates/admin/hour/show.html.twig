@@ -1,34 +1,38 @@
-<!DOCTYPE html>
+{% extends 'admin/layouts/base.html.twig' %}
 
-<title>Hour</title>
+{% block title %}Voir{% endblock %}
 
 {% block body %}
-    <h1>Hour</h1>
+    <h1>Horaire #{{ hour.id }}</h1>
 
-    <table class="table">
+    <table class="table m-4">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <td>{{ hour.id }}</td>
             </tr>
             <tr>
-                <th>StartDate</th>
-                <td>{{ hour.startDate ? hour.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Jour</th>
+                <td>{{ hour.day }}</td>
             </tr>
             <tr>
-                <th>EndDate</th>
-                <td>{{ hour.endDate ? hour.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Debut</th>
+                <td>{{ hour.startDate ? hour.startDate|date('H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>Closed</th>
-                <td>{{ hour.closed ? 'Yes' : 'No' }}</td>
+                <th>Fin</th>
+                <td>{{ hour.endDate ? hour.endDate|date('H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fermé?</th>
+                <td>{{ hour.closed ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('admin_hour_index') }}">back to list</a>
+    <a href="{{ path('admin_hour_index') }}" class="btn btn-secondary">Retour</a>
 
-    <a href="{{ path('admin_hour_edit', {'id': hour.id}) }}">edit</a>
+    <a href="{{ path('admin_hour_edit', {'id': hour.id}) }}" class="btn btn-primary">Editer</a>
 
     {{ include('admin/hour/_delete_form.html.twig') }}
 {% endblock %}

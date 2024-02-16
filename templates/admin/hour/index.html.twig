@@ -12,7 +12,7 @@
                 <th>Jour</th>
                 <th>Ouverture</th>
                 <th>Fermature</th>
-                <th>Fermé</th>
+                <th>Fermé?</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,15 +23,15 @@
                 <td>{{ hour.Day }}</td>
                 <td>{{ hour.startDate ? hour.startDate|date('H:i') : '' }}</td>
                 <td>{{ hour.endDate ? hour.endDate|date('H:i') : '' }}</td>
-                <td>{{ hour.closed ? 'Yes' : 'No' }}</td>
+                <td>{{ hour.closed ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('admin_hour_show', {'id': hour.id}) }}" class="btn btn-primary">show</a>
-                    <a href="{{ path('admin_hour_edit', {'id': hour.id}) }}" class="btn btn-secondary">edit</a>
+                    <a href="{{ path('admin_hour_show', {'id': hour.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('admin_hour_edit', {'id': hour.id}) }}" class="btn btn-secondary">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">Acuune horaire retrouvé</td>
+                <td colspan="5">Acuune horaire trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
