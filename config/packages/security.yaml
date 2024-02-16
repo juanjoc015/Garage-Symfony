@@ -33,9 +33,11 @@ security:
     # Note: Only the *first* access control that matches will be used
 
     role_hierarchy:
-        ROLE_CARS:
-        ROLE_ADMIN: ROLE_CARS
+        ROLE_EMPLOYEE: ROLE_USER
+        ROLE_ADMIN: ROLE_EMPLOYEE
 
     access_control:
-        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_CARS] }
-        - { path: ^/admin/cars, roles: [ROLE_CARS] }
+        - { path: ^/admin/horaires, roles: [ROLE_ADMIN] }
+        - { path: ^/admin/services, roles: [ROLE_ADMIN] }
+        - { path: ^/admin/utilisateurs, roles: [ROLE_ADMIN] }
+        - { path: ^/admin, roles: ROLE_USER }

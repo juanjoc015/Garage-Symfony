@@ -1,0 +1,40 @@
+{% extends 'admin/layouts/base.html.twig' %}
+
+{% block title %}Les avis{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Les avis</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Note</th>
+                    <th>Crée le</th>
+                    <th>Validé ?</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for review in reviews %}
+                <tr>
+                    <td>{{ review.id }}</td>
+                    <td>{{ review.lastname }}</td>
+                    <td>{{ review.rating }}</td>
+                    <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i') : '-' }}</td>
+                    <td>{{ review.enabled ? 'Oui' : 'Non' }}</td>
+                    <td>
+                        <a href="{{ path('admin_review_show', {'id': review.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucun avis trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

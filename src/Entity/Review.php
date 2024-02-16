@@ -48,7 +48,8 @@ class Review
     #[ORM\Column()]
     private ?int $rating = null;
 
-    
+    #[ORM\Column]
+    private ?bool $enabled = null;
 
     public function getCreatedAt(): \DateTimeInterface
     {
@@ -99,6 +100,18 @@ class Review
     public function setRating(int $rating): static
     {
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    public function isEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): static
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

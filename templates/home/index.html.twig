@@ -1,5 +1,10 @@
 {% extends 'layouts/base.html.twig' %}
 
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/stars.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
 
 	{% include "home/partials/_service.html.twig" %}

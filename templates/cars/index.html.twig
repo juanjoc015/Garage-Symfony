@@ -3,6 +3,11 @@
 {% block title %}Voitures
 {% endblock %}
 
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/cars.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
 	<section class="section-cars">
 		<h2 class="h2-cars">Tous nos véhicules d'occasion</h2>
@@ -11,17 +16,19 @@
 		<div class="vehicle-list row m-2 mb-5">
 			<!-- Aquí puedes mostrar los vehículos de ocasión disponibles -->
 			{% for car in cars %}
-				<div class="vehicle-item  Volkswagen prix-10000 avant2010 col-lg-3 col-md-5">
+				<div class="vehicle-item car col-lg-3 col-md-5" data-brand="{{ car.brand|lower }}" data-year="{{ car.year }}" data-price="{{ car.price }}">
 					<div class="card h-100">
 						<img src="{{ car.image }}" alt="Car 1" class="card-img-top">
 						<div class="card-body">
 							<h3 class="card-title">{{ car.name }}</h3>
+							<p class="card-text">Marque:
+								{{ car.brand }}</p>
 							<p class="card-text">Année:
 								{{ car.year }}</p>
 							<p class="card-text">kilométrage:
 								{{ car.mileage }}
 								km</p>
-							<p class="card-text price">Prix:
+							<p class="card-text">Prix:
 								{{ car.price}}
 								€</p>
 							<div class="text-end">
@@ -43,6 +50,8 @@
 							</div>
 							<div class="modal-body">
 								<img src="{{ car.image }}" alt="Car 1" class="img-fluid" loading="lazy">
+								<p>Marque:
+									{{ car.brand }}</p>
 								<p>Année:
 									{{ car.year }}</p>
 								<p>kilométrage:

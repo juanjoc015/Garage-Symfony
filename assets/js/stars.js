@@ -1,16 +1,27 @@
+document.addEventListener("DOMContentLoaded", function() {
+  let starsContainer = document.getElementById("stars");
+  let selectedStarIndex = -1;
+  let inputRating = document.getElementById("review_rating");
 
-    var stars = document.querySelectorAll('.form_star');
-    var rating = document.getElementById('review_rating');
-    stars.forEach(function (star, index) {
-      star.addEventListener('click', function () {
-        rating.value = index + 1;
-        stars.forEach(function (innerStar, innerIndex) {
-          if (innerIndex < index + 1) {
-            innerStar.classList.add('selected');
-          } else {
-            innerStar.classList.remove('selected');
-          }
-        });
-      });
+  function updateStars() {
+    let stars = Array.from(starsContainer.getElementsByClassName("star"));
+    stars.forEach((star, index) => {
+      if (index <= selectedStarIndex) {
+        star.classList.add("fas");
+        star.classList.remove("far");
+      } else {
+        star.classList.add("far");
+        star.classList.remove("fas");
+      }
     });
+  }
 
+  starsContainer.addEventListener("click", function(event) {
+    if (event.target.matches(".star, .star *")) {
+      let stars = Array.from(starsContainer.getElementsByClassName("star"));
+      selectedStarIndex = stars.indexOf(event.target.closest(".star"));
+      inputRating.value = selectedStarIndex + 1;
+      updateStars();
+    }
+  });
+});

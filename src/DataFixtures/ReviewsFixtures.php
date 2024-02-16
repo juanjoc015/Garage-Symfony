@@ -15,13 +15,13 @@ class ReviewsFixtures extends Fixture
         for ($i = 1; $i <= 10; $i++) {
 
             $review = new Review();
-            
+
             $review->setLastname('nom ' . $i)
                     ->setMessage('Contenu de la critique ' . $i)
                     ->setRating(mt_rand(1, 5))
                     ->setCreatedAt(new \DateTime())
-                    ;
-                
+                    ->setEnabled(true)
+                ;
 
             $manager->persist($review);
         }

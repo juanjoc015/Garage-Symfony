@@ -11,22 +11,13 @@
 				</div>
 			</div>
 			<div class="row text-center">
-
-				<div class="col-md-4 section-service">
-					<h4 class="service-heading">Entretien de véhicules</h4>
-					<p class="text-muted">Nous offrons des services d'entretien régulier pour assurer le bon fonctionnement de
-						                votre véhicule.</p>
-				</div>
-				<div class="col-md-4 section-service">
-					<h4 class="service-heading">Réparations véhicules</h4>
-					<p class="text-muted">Notre équipe de techniciens qualifiés peut diagnostiquer et réparer tous les
-						                problèmes que votre voiture pourrait rencontrer.</p>
-				</div>
-				<div class="col-md-4 section-service">
-					<h4 class="service-heading">Vente de véhicules d'occasion</h4>
-					<p class="text-muted">Nous proposons une large gamme de véhicules d'occasion de qualité à des prix
-						                compétitifs.</p>
-				</div>
+				{% for service in services %}
+					{% set colWidth = 12 / services|length %}
+					<div class="section-service col-md-{{ colWidth }}">
+						<h4 class="service-heading">{{ service.title }}</h4>
+						<p class="text-muted">{{ service.description }}</p>
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

@@ -5,14 +5,14 @@ namespace App\Enum;
 class UserRoleEnum 
 {
     public const ROLE_USER = 'ROLE_USER';
-    public const ROLE_CARS = 'ROLE_CARS';
+    public const ROLE_EMPLOYEE = 'ROLE_EMPLOYEE';
     public const ROLE_ADMIN = 'ROLE_ADMIN';
 
     public static function getRoles(): array
     {
         return [
             self::ROLE_USER => 'Utilisateur',
-            self::ROLE_CARS => 'Gestionnaire',
+            self::ROLE_EMPLOYEE => 'Employé',
             self::ROLE_ADMIN => 'Administrateur',
         ];
     }

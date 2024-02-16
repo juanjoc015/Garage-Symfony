@@ -7,10 +7,14 @@
                         Gérer les utilisateurs
                     </a>
                 </li>
-                
                 <li class="nav-item mx-3">
                     <a class="nav-link text-white" href="{{ path('admin_hour_index') }}">
                         Gérer les horaires
+                    </a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-white" href="{{ path('admin_service_index') }}">
+                        Gérer les services
                     </a>
                 </li>
             {% endif %}
@@ -20,10 +24,15 @@
                 </a>
             </li>
             <li class="nav-item mx-3">
-                    <a class="nav-link text-white" href="{{ path('admin_contact_index') }}">
-                        Gérer les contacts
-                    </a>
-                </li>
+                <a class="nav-link text-white" href="{{ path('admin_review_index') }}">
+                    Gérer les avis
+                </a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link text-white" href="{{ path('admin_contact_index') }}">
+                    Gérer les contacts
+                </a>
+            </li>
             <li class="nav-item mx-3">
                 <a class="nav-link text-white" href="{{ path('logout') }}">
                     Déconnexion

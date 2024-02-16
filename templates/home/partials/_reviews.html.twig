@@ -9,16 +9,21 @@
 						<h5 class="card-title">{{ review.lastname }}</h5>
 						<p class="card-text">{{ review.message }}</p>
 						<div class="stars">
-							<span class="star selected">&#9733;</span>
-							<span class="star selected">&#9733;</span>
-							<span class="star selected">&#9733;</span>
-							<span class="star selected">&#9733;</span>
-							<span class="star selected">&#9733;</span>
+							{% for i in 1..5 %}
+								{% if i <= review.rating %}
+									<i class="star fas fa-star selected"></i>
+								{% else %}
+									<i class="star far fa-star"></i>
+								{% endif %}
+							{% endfor %}
 						</div>
 					</div>
 				</div>
 			</div>
 		{% endfor %}
+	</div>
+	<div class="text-center">
+		<a href="{{ path('review_index') }}" class="btn btn-primary w-25">Voir plus d'avis</a>
 	</div>
 </section>
 
@@ -37,14 +42,11 @@
 			<div class="mb-3">
 				<label for="rating" class="form-label">Évaluez-nous</label>
 				<div id="stars">
-					<span class="form_star star" data-value="1">&#9733;</span>
-					<span class="form_star star" data-value="2">&#9733;</span>
-					<span class="form_star star" data-value="3">&#9733;</span>
-					<span class="form_star star" data-value="4">&#9733;</span>
-					<span class="form_star star" data-value="5">&#9733;</span>
+					{% for i in 1..5 %}
+						<i class="star far fa-star"></i>
+					{% endfor %}
 				</div>
-				{{ form_errors(review_form.rating) }}
-				{{ form_widget(review_form.rating, {'attr':{'id':'rating'}}) }}
+				{{ form_row(review_form.rating, {'attr':{'id':'rating'}}) }}
 			</div>
 			<div class="d-flex justify-content-end">
 				<button type="submit" class="btn btn-primary">Poster l'avis</button>
