@@ -30,6 +30,7 @@ class CarsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $car->setUser($this->getUser());
             $entityManager->persist($car);
             $entityManager->flush();
 

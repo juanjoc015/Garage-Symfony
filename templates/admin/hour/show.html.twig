@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>Jour</th>
-                <td>{{ hour.day }}</td>
+                <td>{{ static_call('App\\Enum\\DaysEnum', 'getName', hour.day) }}</td>
             </tr>
             <tr>
                 <th>Debut</th>

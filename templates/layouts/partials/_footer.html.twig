@@ -30,7 +30,7 @@
 				<ul class="list-unstyled">
 					{% for hour in hours %}
 						<li>
-							{{ hour.day }}:
+							{{ static_call('App\\Enum\\DaysEnum', 'getName', hour.day) }}:
 							{% if hour.closed %}
 								Fermé
 							{% else %}

@@ -4,18 +4,20 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-lg-4">
 				<div class="card mb-3">
-					{% for hour in hours %}
-						<div class="card-body">
-							<p class="fw-bold">{{ hour.day }}:</p>
-							{% if hour.closed %}
-								Fermé
-							{% else %}
-								{{ hour.startDate|date('H:i') }}
-								-
-								{{ hour.endDate|date('H:i') }}
-							{% endif %}
-						</div>
-					{% endfor %}
+					<div class="card-body">
+						{% for hour in hours %}
+							<p>
+								<span class="fw-bold">{{ static_call('App\\Enum\\DaysEnum', 'getName', hour.day) }}:</span>
+								{% if hour.closed %}
+									Fermé
+								{% else %}
+									{{ hour.startDate|date('H:i') }}
+									-
+									{{ hour.endDate|date('H:i') }}
+								{% endif %}
+							</p>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 		</div>

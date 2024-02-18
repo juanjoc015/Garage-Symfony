@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Hour;
-
+use App\Enum\DaysEnum;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,15 +18,7 @@ class HourType extends AbstractType
         $builder
             ->add('day', ChoiceType::class, [
                 'label' => 'Jour',
-                'choices' => [
-                    'lundi' => 'lundi', 
-                    'mardi' => 'mardi', 
-                    'mercredi' => 'mercredi', 
-                    'jeudi' => 'jeudi',
-                    'vendredi' => 'vendredi', 
-                    'samedi' => 'samedi', 
-                    'dimanche' => 'dimanche'
-                ],
+                'choices' => array_flip(DaysEnum::getDays()),
                 'multiple' => false,
                 'expanded' => true,
             ])
@@ -42,7 +34,7 @@ class HourType extends AbstractType
 
             ])
             ->add('closed', CheckboxType::class, [
-                'label' => 'Fermé',
+                'label' => 'Fermé ?',
                 'required' => false,
             ])
         ;

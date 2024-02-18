@@ -8,6 +8,7 @@
 {% block body %}
 
 	{% include "home/partials/_service.html.twig" %}
+
 	{% for label, messages in app.flashes(['success', 'error']) %}
 		{% for message in messages %}
 			<div class="alert alert-{{ label }}">
@@ -15,7 +16,9 @@
 			</div>
 		{% endfor %}
 	{% endfor %}
+
 	{% include "home/partials/_hours.html.twig" %}
 	{% include "home/partials/_cars.html.twig" %}
 	{% include "home/partials/_reviews.html.twig" %}
 {% endblock %}
+

@@ -4,23 +4,23 @@
 
 {% block body %}
     <h1 class="m-4">Gérer les horaires</h1>
-    <a href="{{ path('admin_hour_new') }}" class="btn btn-primary m-4">Creer nouveaux horaire</a>
+    <a href="{{ path('admin_hour_new') }}" class="btn btn-primary m-4">Ajouter un horaire</a>
     <table class="table m-4">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Jour</th>
                 <th>Ouverture</th>
-                <th>Fermature</th>
-                <th>Fermé?</th>
-                <th>actions</th>
+                <th>Fermeture</th>
+                <th>Fermé ?</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for hour in hours %}
             <tr>
                 <td>{{ hour.id }}</td>
-                <td>{{ hour.Day }}</td>
+                <td>{{ static_call('App\\Enum\\DaysEnum', 'getName', hour.day) }}</td>
                 <td>{{ hour.startDate ? hour.startDate|date('H:i') : '' }}</td>
                 <td>{{ hour.endDate ? hour.endDate|date('H:i') : '' }}</td>
                 <td>{{ hour.closed ? 'Oui' : 'Non' }}</td>
@@ -31,7 +31,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">Acuune horaire trouvé</td>
+                <td colspan="5">Aucun horaire trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
