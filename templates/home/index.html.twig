@@ -1,8 +1,24 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% block body %}
-    {% include "home/partials/_service.html.twig" %}
-    {% include "home/partials/_hours.html.twig" %}
-    {% include "home/partials/_cars.html.twig" %}
-    {% include "home/partials/_reviews.html.twig" %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('js/stars.js') }}" defer></script>
 {% endblock %}
+
+{% block body %}
+
+	{% include "home/partials/_service.html.twig" %}
+
+	{% for label, messages in app.flashes(['success', 'error']) %}
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	{% include "home/partials/_hours.html.twig" %}
+	{% include "home/partials/_cars.html.twig" %}
+	{% include "home/partials/_reviews.html.twig" %}
+{% endblock %}
+

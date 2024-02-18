@@ -1,0 +1,43 @@
+{% extends 'admin/layouts/base.html.twig' %}
+
+{% block title %}Tous les véhicules{% endblock %}
+
+{% block body %}
+    <h1 class="m-4">Tous les véhicules</h1>
+
+    <table class="table m-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Année</th>
+                <th>Kilométrage</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <a href="{{ path('admin_cars_new') }}" class="btn btn-primary m-4">Ajouter un véhicule</a>
+        {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.name }}</td>
+                <td>{{ car.brand }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.mileage }}</td>
+                <td>{{ car.price }}</td>
+                <td>
+                    <a href="{{ path('admin_cars_show', {'id': car.id}) }}" class="btn btn-primary btn-sm">Voir</a>
+                    <a href="{{ path('admin_cars_edit', {'id': car.id}) }}" class="btn btn-secondary btn-sm">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun véhicule trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

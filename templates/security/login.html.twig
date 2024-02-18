@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center my-5">
+	<div class="col-lg-5 col-md-12 mb-4">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+		<h5>Connexion</h5>
+		<!-- Inicio de sesión -->
+		<form id="loginForm" method="post">
+			<div class="form-group">
+				<label for="email">Adresse e-mail:</label>
+				<!-- Correo electrónico -->
+				<input
+				value="{{ last_username }}" type="text" class="form-control" id="email" placeholder="Entrez votre e-mail ici" autocomplete="email" name="email" required autofocus>
+			<!-- Ingrese su correo -->
+			</div>
+			<div class="form-group">
+				<label for="password">Mot de passe:</label>
+				<!-- Contraseña -->
+				<input
+				type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe ici" name="password" required>
+			<!-- Ingrese su contraseña -->
+			</div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<button type="submit" class="btn btn-primary btn-filtre">Se connecter</button>
+			<!-- Iniciar sesión -->
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'admin/layouts/base.html.twig' %}
+
+{% block title %}Editer le véhicule #{{ car.id }}{% endblock %}
+
+{% block body %}
+    <h1>Editer le véhicule #{{ car.id }}</h1>
+
+    {{ include('admin/cars/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('admin_cars_index') }}" class="btn btn-secondary m-3">Retour</a>
+
+    {{ include('admin/cars/_delete_form.html.twig') }}
+{% endblock %}

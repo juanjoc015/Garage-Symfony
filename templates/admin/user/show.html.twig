@@ -1,0 +1,44 @@
+{% extends 'admin/layouts/base.html.twig' %}
+
+{% block title %}Utilisateur #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="table m-4">Utilisateur #{{ user.id }}</h1>
+
+		<table class="table m-4">
+			<tbody>
+				<tr>
+					<th>#</th>
+					<td>{{ user.id }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ user.email }}</td>
+				</tr>
+				<tr>
+					<th>Roles</th>
+					<td>
+						{% for role in user.roles %}
+							{{ static_call('App\\Enum\\UserRoleEnum', 'getName', role|upper) }}
+						{% endfor %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div>
+			<a href="{{ path('admin_user_edit', {'id': user.id}) }}" class="btn btn-primary m-3">Éditer</a>
+		</div>
+
+		<div>
+			<a href="{{ path('admin_user_index') }}" class="btn btn-secondary m-3">Retour</a>
+		</div>
+
+		<div>
+			{{ include('admin/user/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

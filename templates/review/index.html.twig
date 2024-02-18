@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Les avis{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <h1>Les avis</h1>
+        <div class="row">
+            {% for review in reviews %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body comentaire">
+                            <h5 class="card-title">{{ review.lastname }}</h5>
+                            <p class="card-text">{{ review.message }}</p>
+                            <div class="stars">
+                                {% for i in 1..5 %}
+                                    {% if i <= review.rating %}
+                                        <i class="star fas fa-star selected"></i>
+                                    {% else %}
+                                        <i class="star far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
